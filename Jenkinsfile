@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh '''
                 cd myapp
+                docker ps -a
                 docker build -t mabdelrady/hello-world .
                 '''
             }
@@ -19,7 +20,10 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run mabdelrady/hello-world'
+                sh '''
+                docker --rm run mabdelrady/hello-world
+                docker ps -a
+                '''
             }
         }
 
