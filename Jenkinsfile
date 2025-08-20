@@ -21,7 +21,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 sh '''
-                docker run --rm mabdelrady/hello-world
+                docker run --rm mabdelrady/hello-world sleep infinity
                 docker ps -a
                 '''
             }
