@@ -8,6 +8,12 @@ pipeline {
     }
 
     stages {
+        stage('Debug DOCKER_HOST ENV variable') {
+            steps {
+                sh 'echo "DOCKER_HOST=$DOCKER_HOST"'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh '''
