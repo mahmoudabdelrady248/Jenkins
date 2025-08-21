@@ -8,9 +8,14 @@ pipeline {
     }
 
     stages {
-        stage('Debug DOCKER_HOST ENV variable') {
+        stage('Debug docker in agent') {
             steps {
-                sh 'echo "DOCKER_HOST=$DOCKER_HOST"'
+                sh '''
+                echo "DOCKER_HOST=$DOCKER_HOST"
+
+                echo "Inspect agent container"
+                docker inspect $HOSTNAME
+                '''
             }
         }
 
