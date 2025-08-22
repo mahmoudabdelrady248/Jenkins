@@ -8,17 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Debug docker in agent') {
-            steps {
-                sh '''
-                echo "DOCKER_HOST=$DOCKER_HOST"
-
-                echo "Inspect agent container"
-                docker inspect $HOSTNAME
-                '''
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh '''
@@ -31,7 +20,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 sh '''
-                docker run --rm mabdelrady/hello-world sleep infinity
+                docker run --rm mabdelrady/hello-world
                 '''
             }
         }
