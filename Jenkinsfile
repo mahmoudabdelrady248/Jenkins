@@ -20,6 +20,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 sh '''
+                echo $DOCKER_HOST
                 docker run --rm mabdelrady/hello-world
                 '''
             }
